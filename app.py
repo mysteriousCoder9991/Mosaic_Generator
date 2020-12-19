@@ -1,3 +1,6 @@
+import tkinter as tk
+from tkinter import filedialog
+
 import cv2
 import numpy as np
 import xlsxwriter
@@ -6,10 +9,11 @@ import xlsxwriter
 def create_mosaic_in_excel(photo, box_height, box_width, col_width=2, row_height=15):
     # Get the height and width of the photo
     height, width, _ = photo.shape
-
+    fname = input("Enter the file name in which you want to save the file : ")
     # Create Excel workbook and worksheet
-    workbook = xlsxwriter.Workbook('photo-mosaic.xlsx')
-    worksheet = workbook.add_worksheet("own-pic")
+    workbook = xlsxwriter.Workbook(fname + ".xlsx")
+    wbName = input("Enter the worksheet name : ")
+    worksheet = workbook.add_worksheet(wbName)
 
     # Resize columns and rows
     worksheet.set_column(0, width // box_width - 1, col_width)
@@ -44,8 +48,13 @@ def create_mosaic_in_excel(photo, box_height, box_width, col_width=2, row_height
 
 
 def main():
+    root = tk.Tk()
+    root.withdraw()
+
     try:
-        photo = cv2.imread("covpic.png")
+        file_path = filedialog.askopenfilename(initialdir="/Excel_Photo_Collage", title="Select Image",
+                                               filetypes=(("png files", "*.png"), ("all files", "*.*")))
+        photo = cv2.imread(file_path)
     except OSError:
         print("The file is not found")
         exit()
