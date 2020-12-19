@@ -7,6 +7,7 @@ Requirements:
 1. Windows >= 7
 2. Python >= 3.6
 3. RAM >= 8 GB
+4. MS Excel 
 
 To run this application follow the following steps
 1. Clone this repository
