@@ -1,6 +1,6 @@
 # Mosaic_Generator
 
-This application can be used to **Generate a Collage**
+This application can be used to Generate a Collage
 in Excel. 
 <br>
 Requirements:

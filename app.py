@@ -62,7 +62,14 @@ def main():
     number_rows = 50
 
     # Get height and width of photo
-    height, width, _ = photo.shape
+    try:
+        height, width, _ = photo.shape
+    except AttributeError:
+        print("Interrupted Execution\nExiting after 5 seconds......................")
+        for i in range(0, 5):
+            print(5 - i)
+        print("Exiting now!")
+        exit()
     box_width = width // number_cols
     box_height = height // number_rows
 
